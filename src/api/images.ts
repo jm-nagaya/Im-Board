@@ -24,7 +24,7 @@ export const imageApi = {
             formData.append('message', message);
         }
 
-        const token = await(getToken());
+        const token = await getToken();
 
         return fetch(`${API_URL}/images/upload`, {
             method: 'POST',
