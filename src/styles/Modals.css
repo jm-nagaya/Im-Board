@@ -1,0 +1,202 @@
+@import url('colors.css');
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: slideIn 0.2s ease;
+}
+
+.modalContent {
+  display:flex;
+  /* overflow:hidden; */
+  /* flex-direction: column; */
+  padding: 2em;
+  background-color: var(--primary);
+  width: 70vw;
+  height: 70vh;
+  border-radius: 20px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  height: 80%;
+  min-width: 30%;
+  background-color: var(--secondary);
+  border-radius: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 10px;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  font-size: 25px;
+  font-weight: bold;
+  color: var(--font);
+  background-color: var(--tertiary);
+  border-radius: 10px;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-width: 5px;
+  cursor: pointer;
+  flex: 1;
+  margin: 1% 5%;
+  max-height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.control:hover {
+  filter: brightness(1.1);
+  transform: scale(1.1) rotate(-1deg);
+}
+
+.control:active {
+  transition: none;
+  transform: scale(0.95) rotate(1deg);
+}
+
+.closeButton {
+  position:absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.controlCenter {
+  display:flex;
+  width: 100%;
+  height: 20%;
+}
+
+.chooser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90%;
+  margin: 1rem;
+  flex: 1;
+  background-color: var(--alt);
+  border-radius: 5px;
+}
+
+.chooser h1 {
+  font-size: clamp(14px, 5vw, 24px);
+}
+
+.fileSelector {
+  border-radius: 5px;
+  background-color: var(--alt);
+  padding: 0.3rem;
+  font-size: 1.2rem;
+  font-family:'Times New Roman', Times, serif;
+  transition: box-shadow 0.1s ease, background-color 0.5s ease;
+}
+
+.fileSelector:hover {
+  background-color: var(--tertiary);
+  cursor:pointer;
+  box-shadow: 0 0 1px black;
+}
+
+.fileSelector:active {
+  box-shadow: 0 0 5px black inset;
+}
+
+.chooser input[type="file"] {
+  display: none;
+}
+
+.messageContainer {
+  display: flex;
+  overflow-wrap: break-word;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  border-radius: 50px;
+  border: 4px solid rgba(0, 0, 0, 0.7);
+  padding:20px;
+  margin: 5px;
+}
+
+
+.messageInput {
+  flex:1;
+  height: 100%;
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+.uploadSection {
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary);
+  color: black;
+  padding: 10px;
+  align-items: center;
+  border-radius: 20px;
+  height: 100%;
+  width: 30%;
+  box-shadow: 0 0px 20px rgba(0, 0, 0, 0.7);
+  border: 5px solid rgba(0, 0, 0, 0.1);
+}
+
+.brushSettings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--secondary);
+  padding: 2rem;
+  border-radius: 10px;
+  /* color:white; */
+  margin: 1rem;
+  text-align: center;
+  width: 20%;
+  height: fit-content;
+}
+
+.brushSettings label {
+  font-size: clamp(14px, 1vw, 24px);
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.brushSettings input[type=range] {
+  margin-bottom: 0;
+  width: 100%;
+}
+
+.brushSettings p {
+  margin: 0;
+  margin-bottom: 10px;
+  /* font-style: italic; */
+  font-weight: bold;
+}
+
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform:translateY(100vh);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

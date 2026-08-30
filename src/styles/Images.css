@@ -1,0 +1,19 @@
+.enlargedView {
+    max-width: 95%;
+    max-height: 80%;
+    /* min-width: 60%;
+    min-height: 50%; */
+    object-fit: contain;
+    /* box-shadow: 5px 5px 50px black; */
+    border-style: solid;
+    border-width: 10px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.preview {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+}

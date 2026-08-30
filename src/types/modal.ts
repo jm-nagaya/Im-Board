@@ -1,0 +1,1 @@
+export type ModalType = 'upload' | 'gif' | 'draw' | 'image' | null;

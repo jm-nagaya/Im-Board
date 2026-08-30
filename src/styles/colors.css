@@ -1,0 +1,8 @@
+:root {
+    --primary: #f8a5b9;
+    --secondary: #b9f8a5;
+    --tertiary: #a5b9f8;
+    --alt: #e2f8a5;
+    /* --font: rgb(80, 80, 80); */
+    --font: black;
+}
