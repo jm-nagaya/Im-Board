@@ -13,36 +13,29 @@ interface NavBarProps {
 
 export function NavBar({ onSignOut, user, onUploadClick, onGifClick, onDrawClick }: NavBarProps) {
 
-    const { fetchImages } = useImageStore();
-
     return (
         <nav>
             <div className='navBar'>
                 <span className='greeter'>Hello {user?.username}</span>
-                <div>
-                    <button className='uploadButtons'
+                <div className='navBtnCont'>
+                    <button className='navButton navButton--red'
                         onClick={onUploadClick}
                     >
                         Upload Image
                     </button>
-                    <button className='uploadButtons'
+                    <button className='navButton navButton--yellow'
                         onClick={onGifClick}
                     >
                         Choose GIF
                     </button>
-                    <button className='uploadButtons'
+                    <button className='navButton navButton--green'
                         onClick={onDrawClick}
                     >
                         Draw Image
                     </button>
                 </div>
-                <button className='control'
-                    onClick={fetchImages}
-                >
-                    Refresh
-                </button>
                 {onSignOut && (
-                    <button className='navButton'
+                    <button className='signOutButton'
                         onClick={onSignOut}
                     >
                         Sign Out

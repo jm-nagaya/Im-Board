@@ -1,24 +1,27 @@
 @import url('colors.css');
 
 .greeter {
-    font-size: 20px;
+    font-size: large;
     font-weight: bold;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .navBar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 64px;
+    height: fit-content;
+    min-height: 60px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    padding: 0 24px;
+    padding: 0 2rem;
     z-index: 1000;
     background-color: var(--primary);
     box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.75);
 }
-.navButton {
+.signOutButton {
     background-color: transparent;
     padding: 8px 16px;
     color: red;
@@ -27,22 +30,77 @@
     font-size: 14px;
 }
 
-.navButton:hover {
+.signOutButton:hover {
     transform:scale(0.9);
     transition: transform 0.1s ease;
 }
 
-.uploadButtons {
+/* .navButton {
     font-size: 15px;
     font-weight:bold;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color:white;
     color:black;
-    margin:10px;
+    margin: 0 1rem;
     padding: 5px;
     border-radius: 5px;
+    transition: transform .3s linear;
+}
+*/
+
+.navBtnCont {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    max-width: 30%;
+    min-width: fit-content;
+    background-color: rgba(0, 0, 0, 0.205);
+    padding: 0.35rem;
+    border-radius: 1rem;
+    margin: 5px 2rem;
 }
 
-.uploadButtons:hover {
-    cursor:pointer;
+.navButton {
+	background-color: hsl(0,0%,50%);
+	border-radius: 0.5em;
+	box-shadow:
+		0 0 0 2px hsl(0,0%,100%) inset,
+		-0.25em -0.25em 0.25em hsla(0,0%,0%,0.5) inset;
+	cursor: pointer;
+    text-align: center;
+	margin: 0 auto 0.25em auto;
+	outline: transparent;
+	position: relative;
+	width: fit-content;
+	height: 3.3em;
+	-webkit-appearance: none;
+	appearance: none;
+	-webkit-tap-highlight-color: transparent;
+    font-weight: bold;
+    transition: all 0.1s ease;
+    padding: .5rem;
+}
+
+.navButton:hover {
+    filter: brightness(1.1);
+}
+
+.navButton:active {
+    transition: none;
+    box-shadow:
+        0 0 0 2px hsl(0,0%,50%) inset,
+		0.25em 0.25em 0.25em hsla(0,0%,0%,0.5) inset;
+    perspective: 100px;
+    font-size: 95%;
+}
+
+.navButton--green {
+	background-color: hsl(119,51%,39%);
+}
+.navButton--red {
+	background-color: hsl(12,76%,53%);
+}
+.navButton--yellow {
+	background-color: hsl(37,96%,57%);
 }
