@@ -73,7 +73,7 @@
 	outline: transparent;
 	position: relative;
 	width: fit-content;
-	height: 3.3em;
+	height: fit-content;
 	-webkit-appearance: none;
 	appearance: none;
 	-webkit-tap-highlight-color: transparent;
@@ -103,4 +103,20 @@
 }
 .navButton--yellow {
 	background-color: hsl(37,96%,57%);
+}
+
+@media (max-width: 768px) {
+    .navBar {
+        flex-direction: column;
+        padding: 1rem 2rem;
+    }
+    .navButton {
+        font-size: 80%;
+    }
+
+    .signOutButton {
+        position: absolute;
+        top: 1vh;
+        right: 1vw;
+    }
 }

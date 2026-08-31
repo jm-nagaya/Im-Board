@@ -18,7 +18,7 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
     const [message, setMessage] = useState('');
     const [brushSize, setBrushSize] = useState(4);
     const [brushColor, setBrushColor] = useState('#000000');
-    const [canvasSize, setCanvasSize] = useState({ width: 500, height: 350 });
+    const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
     useEffect(() => {
         const container = containerRef.current;
@@ -26,9 +26,8 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
         const resizeObserver = new ResizeObserver((entries) => {
             for (const entry of entries) {
                 const { width, height } = entry.contentRect;
-                const padding = 20; // TODO: Test this with different values
-                const newWidth = Math.max(width - padding, 100);
-                const newHeight = Math.max(height - padding, 100);
+                const newWidth = width;
+                const newHeight = height;
                 setCanvasSize((prev) => {
                     if (prev.width === newWidth && prev.height === newHeight) return prev;
                     return { width: newWidth, height: newHeight };
@@ -138,9 +137,10 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
                     <label>Color:</label>
                     <ChromePicker
                         styles={{
-                            default: {
+                            default:{
                                 picker: {
-                                    width: '100%'
+                                    maxWidth: '100%',
+                                    minWidth: '100px'
                                 }
                             }
                         }}
@@ -149,12 +149,8 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
                         disableAlpha
                     />
                 </div>
-                <div ref={containerRef}
-                    style={{
-                        height: '90%',
-                        width: '100%',
-                        flex: 1
-                    }}
+                <div className='canvasContainer'
+                    ref={containerRef}
                 >
                     <canvas
                         ref={canvasRef}
@@ -173,11 +169,13 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
                             onChange={(e) => setMessage(e.target.value)}
                         ></textarea>
                     </div>
-                    <button className='control'
-                        onClick={handleSubmit}
-                    >
-                        Submit
-                    </button>
+                    <div className='controlCenter'>
+                        <button className='control'
+                            onClick={handleSubmit}
+                        >
+                            Submit
+                        </button>
+                    </div>
                 </div>
                 <button className='control closeButton'
                     onClick={onCancel}

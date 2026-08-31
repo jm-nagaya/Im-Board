@@ -91,11 +91,13 @@ export function UploadModal({ onSubmit, onCancel }: UploadModalProps) {
                         >
                         </textarea>
                     </div>
-                    <button className='control'
-                        onClick={handleSubmit}
-                    >
-                        Upload
-                    </button>
+                    <div className='controlCenter'>
+                        <button className='control'
+                            onClick={handleSubmit}
+                        >
+                            Upload
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
