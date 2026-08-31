@@ -58,8 +58,8 @@ export const useImageStore = create<ImageState>((set) => ({
                 file_path: img.file_path
                     ? `${API_URL}/uploads/${img.file_path}`
                     : null,
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
+                x: Math.random() * (window.innerWidth),
+                y: Math.random() * (window.innerHeight),
                 zIndex: index
             }));
 
