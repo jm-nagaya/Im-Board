@@ -1,0 +1,27 @@
+.refreshButton {
+    position: absolute;
+    bottom: 3vh;
+    right: 2vw;
+    height: 10vh;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 0px;
+
+    transition: transform 0.2s ease;
+}
+
+.refreshButton:hover {
+    cursor: pointer;
+    transform: rotate(10deg) scale(1.1);
+}
+
+.refreshButton:active {
+    transform: rotate(-10deg) scale(0.9);
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
