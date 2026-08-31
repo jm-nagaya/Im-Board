@@ -75,6 +75,7 @@ function BoardContent({ onImageClick, setIsDragging }: BoardProps & BoardContent
 export function Board( { onImageClick }: BoardProps) {
 
     const [isDragging, setIsDragging] = useState(false);
+    const { fetchImages } = useImageStore();
 
     return (
         <TransformWrapper
@@ -87,6 +88,7 @@ export function Board( { onImageClick }: BoardProps) {
                 excluded: ['draggableImage']
             }}
             disabled={isDragging}
+            onInit={fetchImages}
         >
             {/* TODO: Add buttons (maybe)*/}
             {({ zoomIn, zoomOut, resetTransform }) => (
