@@ -47,8 +47,8 @@ function BoardContent({ onImageClick, setIsDragging }: BoardProps & BoardContent
                     position: 'relative',
                     width: '100%',
                     height: '100%',
-                    minWidth: '1980px',
-                    minHeight: '1080px',
+                    minWidth: window.innerWidth * 1.5,
+                    minHeight: window.innerHeight * 1.5,
                     backgroundImage: 'url(\'https://st.depositphotos.com/1092019/3921/i/950/depositphotos_39212821-stock-photo-seamless-tileable-texture-of-paper.jpg\')',
                     backgroundSize: 'auto',
                     backgroundRepeat: 'repeat',
@@ -79,7 +79,7 @@ export function Board( { onImageClick }: BoardProps) {
     return (
         <TransformWrapper
             // initialScale={1}
-            minScale={0.8}
+            minScale={1}
             maxScale={5}
             centerOnInit={true}
             wheel={{ step: 0.001 }}
