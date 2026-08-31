@@ -4,7 +4,6 @@ import { Klipy } from 'gif-picker-react/providers/klipy';
 import { useConfirmDialog } from '../../hooks/useConfirmDialog.ts';
 import { ConfirmDialog } from '../ConfirmDialog.tsx';
 
-//@ts-ignore
 import '../../styles/Modals.css';
 
 interface GifModalProps {

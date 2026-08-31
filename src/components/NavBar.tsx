@@ -1,5 +1,4 @@
 import { AuthUser } from "aws-amplify/auth";
-//@ts-ignore
 import '../styles/NavBar.css';
 
 import { useImageStore } from "../stores/imageStore.ts";

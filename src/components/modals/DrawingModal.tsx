@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { ChromePicker } from 'react-color';
 import { dataURLtoFile } from '../../utils/imageUtils.ts';
-//@ts-ignore
 import '../../styles/Modals.css'
 
 interface DrawingModalProps {

@@ -1,6 +1,4 @@
-//@ts-ignore
 import './App.css';
-//@ts-ignore
 import '@aws-amplify/ui-react/styles.css';
 
 import { useState } from 'react';

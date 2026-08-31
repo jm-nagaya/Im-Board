@@ -5,7 +5,6 @@ import { GifModal } from './GifModal.tsx';
 import { ImageModal } from './ImageModal.tsx';
 import { useImageStore } from "../../stores/imageStore.ts";
 import { DrawingModal } from './DrawingModal.tsx';
-//@ts-ignore
 import '../../styles/Modals.css';
 import { imageApi } from '../../api/images.ts';
 import { toast } from 'react-hot-toast';

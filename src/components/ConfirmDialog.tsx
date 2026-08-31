@@ -1,4 +1,3 @@
-// @ts-ignore
 import '../styles/ConfirmDialog.css';
 
 interface ConfirmDialogProps {

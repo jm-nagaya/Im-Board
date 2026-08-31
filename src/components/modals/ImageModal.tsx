@@ -2,9 +2,7 @@ import { useImageStore } from '../../stores/imageStore.ts';
 import { useConfirmDialog } from '../../hooks/useConfirmDialog.ts';
 import { ConfirmDialog } from '../ConfirmDialog.tsx';
 
-//@ts-ignore
 import '../../styles/Modals.css';
-//@ts-ignore
 import '../../styles/Images.css';
 
 import { FaTrashAlt, FaHeart, FaFlag } from "react-icons/fa";
