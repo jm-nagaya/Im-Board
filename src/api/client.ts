@@ -1,6 +1,7 @@
 import { fetchAuthSession } from "aws-amplify/auth";
 
-export const API_URL = process.env.REACT_APP_API_URL;
+export const API_URL = process.env.REACT_APP_BACKEND_URL + '/api';
+export const BUCKET_URL = process.env.REACT_APP_BACKEND_URL;
 
 export const getToken = async (): Promise<string | null> => {
     try {
@@ -31,7 +32,7 @@ export const apiRequest = async <T>(
         ...(options.headers as Record<string, string> || {})
     };
 
-    const response = await fetch(`${API_URL}${endpoint}`, {
+    const response = await fetch(`${API_URL}/${endpoint}`, {
         ...options,
         headers: mergedHeaders
         // credentials: 'include'

@@ -15,7 +15,7 @@ export interface ApiImage {
 
 export const imageApi = {
     getImages: () => 
-        apiRequest<{ images: ApiImage[] }>('/images'),
+        apiRequest<{ images: ApiImage[] }>('images'),
 
     uploadImage: async (file: File, message?: string) => {
         const formData = new FormData();
@@ -54,22 +54,22 @@ export const imageApi = {
     },
 
     deleteImage: (id: string) =>
-        apiRequest<{ success: boolean }>(`/images/${id}`, {
+        apiRequest<{ success: boolean }>(`images/${id}`, {
             method: 'DELETE'
         }),
     
     likeImage: (id: string) =>
-        apiRequest<{ success: boolean; likes: number }>(`/images/${id}/like`, {
+        apiRequest<{ success: boolean; likes: number }>(`images/${id}/like`, {
             method: 'POST'
         }),
     
     unlikeImage: (id: string) =>
-        apiRequest<{ success: boolean; likes: number }>(`/images/${id}/like`, {
+        apiRequest<{ success: boolean; likes: number }>(`images/${id}/like`, {
             method: 'DELETE'
         }),
     
     flagImage: (id: string) =>
-        apiRequest<{ success: boolean }>(`/images/${id}/flag`, {
+        apiRequest<{ success: boolean }>(`images/${id}/flag`, {
             method: 'POST'
         })
 };

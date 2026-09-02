@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { imageApi, ApiImage } from '../api/images.ts';
-import { API_URL } from '../api/client.ts';
+import { BUCKET_URL } from '../api/client.ts';
+
 interface ImageItem extends ApiImage {
     x: number;
     y: number;
@@ -56,7 +57,7 @@ export const useImageStore = create<ImageState>((set) => ({
             const boardImages: ImageItem[] = data.images.map((img, index) => ({
                 ...img,
                 file_path: img.file_path
-                    ? `${API_URL}/uploads/${img.file_path}`
+                    ? `${BUCKET_URL}/${img.file_path}`
                     : null,
                 x: Math.random() * (window.innerWidth),
                 y: Math.random() * (window.innerHeight),
@@ -76,7 +77,7 @@ export const useImageStore = create<ImageState>((set) => ({
             const count = state.images.length;
 
             const fp = imageData.file_path
-            ? `${API_URL}/uploads/${imageData.file_path}`
+            ? `${BUCKET_URL}/${imageData.file_path}`
             : null;
 
             const url = imageData.external_url
