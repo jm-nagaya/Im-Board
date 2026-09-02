@@ -40,7 +40,7 @@ export function ModalManager ({ modalType, onClose }: ModalManagerProps) {
                 else if (typeof src === 'string' && src.startsWith('https://static.klipy.com')) {
                     const response = await imageApi.addGif(src, message);
                     const data = await response.json();
-                    if (!data.success) throw new Error(data.error)
+                    if (!data.success) throw new Error(data.error || 'Failed to add GIF');
                     imageData = data.image;
                 }
 

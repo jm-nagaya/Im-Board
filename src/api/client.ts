@@ -9,7 +9,7 @@ export const getToken = async (): Promise<string | null> => {
         const token = session.tokens?.accessToken?.toString();
         return token || null;
     } catch (error) {
-        console.error('Failed to get token:', error);
+        console.error('Failed to get token');
         return null;
     }
 };
@@ -39,8 +39,7 @@ export const apiRequest = async <T>(
     });
 
     if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'API request failed');
+        throw new Error(`API request failed with status ${response.status}`);
     }
 
     return response.json();
