@@ -140,7 +140,8 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
                             default:{
                                 picker: {
                                     maxWidth: '100%',
-                                    minWidth: '100px'
+                                    minWidth: '100px',
+                                    touchAction: 'none'
                                 }
                             }
                         }}
@@ -160,6 +161,28 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
                         onMouseMove={draw}
                         onMouseUp={stopDrawing}
                         onMouseLeave={stopDrawing}
+                        onTouchStart={(e) => {
+                            e.preventDefault();
+                            const touch = e.touches[0];
+                            startDrawing({
+                                clientX: touch.clientX,
+                                clientY: touch.clientY,
+                                preventDefault: () => {}
+                            } as React.MouseEvent<HTMLCanvasElement>);
+                        }}
+                        onTouchMove={(e) => {
+                            e.preventDefault();
+                            const touch = e.touches[0];
+                            draw({
+                                clientX: touch.clientX,
+                                clientY: touch.clientY,
+                                preventDefault: () => {}
+                            } as React.MouseEvent<HTMLCanvasElement>);
+                        }}
+                        onTouchEnd={(e) => {
+                            e.preventDefault();
+                            stopDrawing();
+                        }}
                     ></canvas>
                 </div>
                 <div className='uploadSection'>

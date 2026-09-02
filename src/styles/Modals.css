@@ -206,6 +206,7 @@
   width: 30%;
   flex: 1;
   /* background-color: red; */
+  touch-action: none;
 }
 
 
