@@ -19,6 +19,7 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
     const [brushSize, setBrushSize] = useState(4);
     const [brushColor, setBrushColor] = useState('#000000');
     const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -40,6 +41,8 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
     }, []);
 
     useEffect(() => {
+        if (loading) return;
+        
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -70,6 +73,8 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
     }, [brushColor, brushSize]);
 
     const startDrawing = (e: React.MouseEvent<HTMLCanvasElement>) => {
+        if (loading) return;
+
         const canvas = canvasRef.current;
         if (!canvas) return;
 
@@ -88,7 +93,7 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
     };
 
     const draw = (e: React.MouseEvent<HTMLCanvasElement>) => {
-        if (!isDrawing) return;
+        if (!isDrawing || loading) return;
 
         const canvas = canvasRef.current;
         if (!canvas) return;
@@ -108,17 +113,23 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
         setIsDrawing(false);
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const canvas = canvasRef.current;
         if (!canvas) return;
 
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
-        const dataUrl = canvas.toDataURL('image/png');
-        const img = dataURLtoFile(dataUrl);
+        setLoading(true);
+        try {
 
-        onSubmit(img, message);
+            const dataUrl = canvas.toDataURL('image/png');
+            const img = dataURLtoFile(dataUrl);
+
+            await onSubmit(img, message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -195,6 +206,7 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
                     <div className='controlCenter'>
                         <button className='control'
                             onClick={handleSubmit}
+                            disabled={loading}
                         >
                             Submit
                         </button>
@@ -202,6 +214,7 @@ export function DrawingModal({ onSubmit, onCancel }: DrawingModalProps) {
                 </div>
                 <button className='control closeButton'
                     onClick={onCancel}
+                    disabled={loading}
                 >
                     Cancel
                 </button>

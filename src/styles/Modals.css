@@ -71,6 +71,12 @@
   transform: scale(0.95) rotate(1deg);
 }
 
+.control:disabled {
+  filter: brightness(0.7);
+  cursor: not-allowed;
+  transform: none;
+}
+
 .closeButton {
   position:absolute;
   top: 16px;

@@ -45,15 +45,15 @@ export function ModalManager ({ modalType, onClose }: ModalManagerProps) {
                 }
 
                 else {
-                    console.error('Looks like it\'s not a file?');
-                    onClose();
-                    return;
+                    throw new Error('Invalid source type');
                 }
 
                 addBackendImage(imageData);
+                toast.success('Post created', { toasterId: 'loading' });
                 onClose();
             } catch (error) {
-                toast.error((error as Error).message);
+                toast.dismissAll('errors');
+                toast.error((error as Error).message, { toasterId: 'errors' });
             }
         },
         [onClose, addBackendImage]

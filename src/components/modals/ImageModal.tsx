@@ -14,7 +14,7 @@ interface ImageModalProps {
 
 export function ImageModal( { onCancel }: ImageModalProps ) {
     const { confirmDialogState, confirm, close, handleConfirm } = useConfirmDialog();
-    const { images, selectedImageId, deleteImage, likeImage, unlikeImage, flagImage } = useImageStore();
+    const { images, selectedImageId, deleteImage, likeImage, unlikeImage, flagImage, loading } = useImageStore();
     const selectedImage = images.find((img) => img.id === selectedImageId);
 
     if (!selectedImage) {
@@ -48,7 +48,7 @@ export function ImageModal( { onCancel }: ImageModalProps ) {
     return (
         <>
         <div className='overlay'
-            onClick={onCancel}
+            onClick={loading ? undefined : onCancel}
         >
             <div className='modalContent'
                 onClick={(e) => e.stopPropagation()}
@@ -69,6 +69,7 @@ export function ImageModal( { onCancel }: ImageModalProps ) {
                                     : 'var(--font)'
                             }}
                             onClick={handleLike}
+                            disabled={loading}
                         >
                             <FaHeart />
                             <span>{selectedImage.likes}</span>
@@ -78,6 +79,7 @@ export function ImageModal( { onCancel }: ImageModalProps ) {
                         { selectedImage.owned_by_user &&
                         <button className='control'
                             onClick={handleDelete}
+                            disabled={loading}
                         >
                             <FaTrashAlt />
                         </button>
@@ -87,6 +89,7 @@ export function ImageModal( { onCancel }: ImageModalProps ) {
                         { !selectedImage.owned_by_user && !selectedImage.flagged_by_user &&
                         <button className='control'
                             onClick={handleFlag}
+                            disabled={loading}
                         >
                             <FaFlag />
                         </button>

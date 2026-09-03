@@ -14,14 +14,20 @@ interface BoardContentProps {
 }
 
 function BoardContent({ onImageClick, setIsDragging }: BoardProps & BoardContentProps) {
-    const { images, moveImage, bringToFront, error } = useImageStore();
+    const { images, moveImage, bringToFront, error, loading } = useImageStore();
     const { state } = useTransformContext();
 
     useEffect(() => {
         if (error) {
-            toast.error(error);
+            toast.dismissAll('loading');
+            toast.error(error, { toasterId: 'errors' });
+        } else if (loading) {
+            toast.dismissAll('errors');
+            toast.loading('Loading...', { toasterId: 'loading' });
+        } else {
+            toast.dismissAll('loading');
         }
-    }, [error]);
+    }, [error, loading]);
 
     const handleDragEnd = (event: DragEndEvent) => {
         const sourceId = event.operation.source?.id as string;

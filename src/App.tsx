@@ -25,6 +25,11 @@ function App() {
             <>
                 <Toaster position='top-right'
                     containerStyle={{ zIndex: 99999 }}
+                    toasterId='errors'
+                />
+                <Toaster position='bottom-center'
+                    containerStyle={{ zIndex: 99999 }}
+                    toasterId='loading'
                 />
                 <NavBar onSignOut={signOut} user={user}
                     onUploadClick={() => setModalType('upload')}

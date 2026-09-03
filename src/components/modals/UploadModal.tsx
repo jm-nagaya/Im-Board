@@ -12,6 +12,7 @@ export function UploadModal({ onSubmit, onCancel }: UploadModalProps) {
     const [file, setFile] = useState<File | null>(null);
     const [preview, setPreview] = useState<string | null>('');
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const [loading, setLoading] = useState(false);
     
     useEffect(() => {
         return () => {
@@ -42,16 +43,24 @@ export function UploadModal({ onSubmit, onCancel }: UploadModalProps) {
         setPreview(URL.createObjectURL(selectedFile));
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         if (!file || !preview) return;
-        onSubmit(file, message);
+
+        setLoading(true);
+        try {
+            await onSubmit(file, message);
+        } finally {
+            setLoading(false);
+        }
     };
 
     const handleCancel = () => {
-        if (preview) {
-            URL.revokeObjectURL(preview);
+        if (!loading) {
+            if (preview) {
+                URL.revokeObjectURL(preview);
+            }
+            onCancel();
         }
-        onCancel();
     };
 
     return (
@@ -94,8 +103,10 @@ export function UploadModal({ onSubmit, onCancel }: UploadModalProps) {
                     <div className='controlCenter'>
                         <button className='control'
                             onClick={handleSubmit}
+                            disabled={loading}
                         >
-                            Upload
+                            { !loading && 'Upload' }
+                            { loading && 'Uploading...' }
                         </button>
                     </div>
                 </div>

@@ -72,6 +72,7 @@ export const useImageStore = create<ImageState>((set) => ({
     },
     
     addBackendImage: (imageData) => {
+        set({ loading: true });
         set((state) => {
             const maxZ = state.images.reduce((max, img) => Math.max(max, img.zIndex), 0);
             const count = state.images.length;
@@ -95,6 +96,7 @@ export const useImageStore = create<ImageState>((set) => ({
                 owned_by_user: true
             };
 
+            set({ loading: false });
             return {
                 images: [boardImage, ...state.images]
             }
@@ -102,7 +104,7 @@ export const useImageStore = create<ImageState>((set) => ({
     },
 
     deleteImage: async (id) => {
-        set({ error: null })
+        set({ error: null, loading: true });
         try{
             await imageApi.deleteImage(id);
         
@@ -110,14 +112,15 @@ export const useImageStore = create<ImageState>((set) => ({
                 images: state.images.filter((img) => img.id !== id),
                 selectedImageId: null
             }));
+            set({ loading: false });
         } catch (error) {
             console.error(error);
-            set({ error: (error as Error).message || 'Failed to delete image'});
+            set({ error: (error as Error).message || 'Failed to delete image', loading: false });
         }
     },
 
     likeImage: async (id) => {
-        set({ error: null });
+        set({ error: null, loading: true });
         try {
             const result = await imageApi.likeImage(id);
             if (result.success) {
@@ -128,14 +131,15 @@ export const useImageStore = create<ImageState>((set) => ({
                     )
                 }));
             }
+            set({ loading: false });
         } catch (error) {
             console.error('Like error:', error);
-            set({ error: (error as Error).message || 'Failed to like image' });
+            set({ error: (error as Error).message || 'Failed to like image', loading: false });
         }
     },
 
     unlikeImage: async (id) => {
-        set({ error: null });
+        set({ error: null, loading: true });
         try {
             const result = await imageApi.unlikeImage(id);
             if (result.success) {
@@ -145,14 +149,15 @@ export const useImageStore = create<ImageState>((set) => ({
                         )
                 }));
             }
+            set({ loading: false });
         } catch (error) {
             console.error('Unlike error:', error);
-            set({ error: (error as Error).message || 'Failed to unlike image' });
+            set({ error: (error as Error).message || 'Failed to unlike image', loading: false });
         }
     },
 
     flagImage: async (id) => {
-        set({ error: null });
+        set({ error: null, loading: true });
         try{
             const result = await imageApi.flagImage(id);
             if (result.success) {
@@ -162,9 +167,10 @@ export const useImageStore = create<ImageState>((set) => ({
                     )
                 }));
             }
+            set({ loading: false });
         } catch (error) {
             console.error('Error flagging:', error);
-            set({ error: (error as Error).message || 'Failed to flag image' });
+            set({ error: (error as Error).message || 'Failed to flag image', loading: false });
         }
     }
 })
