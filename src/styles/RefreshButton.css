@@ -2,7 +2,8 @@
     position: absolute;
     bottom: 3vh;
     right: 2vw;
-    height: 10vh;
+    height: fit-content;
+    padding: 1rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
     font-size: 2rem;
@@ -24,4 +25,11 @@
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
+}
+
+@media (max-width: 768px) {
+    .refreshButton {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
 }
