@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { GifPicker } from 'gif-picker-react';
 import { Klipy } from 'gif-picker-react/providers/klipy';
 import { useConfirmDialog } from '../../hooks/useConfirmDialog.ts';
@@ -16,14 +16,8 @@ export function GifModal({ onSubmit, onCancel }: GifModalProps) {
 
     const { confirmDialogState, confirm, close, handleConfirm } = useConfirmDialog();
     const [message, setMessage] = useState('');
-    const [open, setOpen] = useState(true);
-
-    useEffect(() => {
-        setOpen(true);
-    }, [])
 
     const handleSubmit = (url: string) => {
-        setOpen(false);
         if (message) {
             onSubmit(url, message);
         }
@@ -33,13 +27,12 @@ export function GifModal({ onSubmit, onCancel }: GifModalProps) {
                 close();
             });
         }
-    }
+    };
 
     const KLIPY_API_KEY = process.env.REACT_APP_KLIPY_API_KEY || '';
 
     return (
         <>
-        {open &&
         <div className='overlay'
             onClick={onCancel}
         >
@@ -65,7 +58,6 @@ export function GifModal({ onSubmit, onCancel }: GifModalProps) {
                 </div>
             </div>
         </div>
-        }
         <ConfirmDialog
             isOpen={confirmDialogState.isOpen}
             title={confirmDialogState.title}
