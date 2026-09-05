@@ -55,9 +55,9 @@ function BoardContent({ onImageClick, setIsDragging }: BoardProps & BoardContent
                     height: '100%',
                     minWidth: window.innerWidth * 1.5,
                     minHeight: window.innerHeight * 1.5,
-                    backgroundImage: 'url(\'https://st.depositphotos.com/1092019/3921/i/950/depositphotos_39212821-stock-photo-seamless-tileable-texture-of-paper.jpg\')',
-                    backgroundSize: 'auto',
-                    backgroundRepeat: 'repeat',
+                    backgroundImage: `url('${process.env.PUBLIC_URL}/background.jpg')`,
+                    backgroundSize: 'cover',
+                    backgroundRepeat: 'no-repeat',
                     backgroundPosition: '0 0',
                     pointerEvents: 'none'
                 }}
