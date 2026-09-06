@@ -20,7 +20,7 @@ function App() {
     const [modalType, setModalType] = useState<ModalType>(null);
 
     return (
-        <Authenticator signUpAttributes={['email']}>
+        <Authenticator signUpAttributes={['email']} socialProviders={['google']}>
             {({ signOut, user }) => (
             <>
                 <Toaster position='top-right'

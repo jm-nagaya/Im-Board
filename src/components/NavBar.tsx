@@ -1,7 +1,7 @@
-import { AuthUser } from "aws-amplify/auth";
+import { useState, useEffect } from 'react';
+import { AuthUser, fetchUserAttributes, UserAttributeKey } from "aws-amplify/auth";
 import '../styles/NavBar.css';
 
-import { useImageStore } from "../stores/imageStore.ts";
 
 interface NavBarProps {
     onSignOut?: () => void;
@@ -12,11 +12,27 @@ interface NavBarProps {
 }
 
 export function NavBar({ onSignOut, user, onUploadClick, onGifClick, onDrawClick }: NavBarProps) {
+    const [attributes, setAttributes] = useState<Partial<Record<UserAttributeKey, string>>>();
+    useEffect(() => {
+        const loadAttributes = async () => {
+            try {
+                const attrs = await fetchUserAttributes();
+                setAttributes(attrs);
+            } catch (error) {
+                console.log('Failed to fetch user attributes');
+            }
+        };
+        if (user) {
+            loadAttributes();
+        }
+    }, [user]);
+
+    const displayName = attributes?.nickname || user?.username || 'User';
 
     return (
         <nav>
             <div className='navBar'>
-                <span className='greeter'>Hello {user?.username}</span>
+                <span className='greeter'>Hello, {displayName}</span>
                 <div className='navBtnCont'>
                     <button className='navButton navButton--red'
                         onClick={onUploadClick}
