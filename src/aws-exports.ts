@@ -6,8 +6,8 @@ const awsmobile = {
     oauth: {
         domain: "ap-southeast-2cshwgla3v.auth.ap-southeast-2.amazoncognito.com",
         scope: ['email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-        redirectSignIn: "http://localhost:3000",
-        redirectSignOut: "http://localhost:3000",
+        redirectSignIn: process.env.REACT_APP_REDIRECT_URL,
+        redirectSignOut: process.env.REACT_APP_REDIRECT_URL,
         responseType: 'code'
     }
 };
