@@ -1,7 +1,7 @@
 # Im-Board
 An anonymous, ephemeral image board with a freeform canvas.
 
-***Note.*** This repo contains the frontend for Im-Board. The backend is not included here.
+***Note.*** This repo contains the frontend for Im-Board. The backend is in a separate repo: https://github.com/jm-nagaya/Im-Board-Backend
 
 Im-Board is a minimalist image board inspired by early image boards but with a different philosophy. There are no threads, no replies, and no infinite scrolling. Every post is ephemeral and disappears after 24 hours. Users can post images, GIFs, and drawings on a freeform canvas that behaves more like a board than a feed.
 
@@ -71,7 +71,7 @@ npm run build
 The build output is in the `build` folder.
 
 ## Backend
-The backend is a separate Node.js and Express API. It is not included in this repository.
+The backend is a separate Node.js and Express API. You can find it in the following repo: https://github.com/jm-nagaya/Im-Board-Backend
 
 ## Contribution
 This is a personal project, but suggestions and bug reports are welcome. Feel free to open an issue or submit a pull request.
