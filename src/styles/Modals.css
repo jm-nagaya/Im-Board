@@ -22,8 +22,8 @@
   overflow:scroll;
   padding: 2em;
   background-color: var(--primary);
-  width: 70vw;
-  height: 70vh;
+  width: 80vw;
+  height: 75vh;
   border-radius: 20px;
   align-items: center;
   justify-content: space-evenly;
@@ -36,10 +36,11 @@
   /* max-width: 50%; */
   height: 80%;
   min-width: 30%;
+  width: 40%;
   background-color: var(--secondary);
   border-radius: 10px;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   padding: 0.8rem;
 }
 
@@ -144,7 +145,7 @@
   border-radius: 50px;
   border: 4px solid rgba(0, 0, 0, 0.7);
   padding:20px;
-  margin: 5px;
+  margin: 0 5px;
   font-size: 1.5rem;
   font-family: 'Courier New', Courier, monospace;
 }

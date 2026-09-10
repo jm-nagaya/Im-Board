@@ -2,7 +2,7 @@
     max-width: 95%;
     max-height: 80%;
     min-height: 40%;
-    /* min-width: 80%; */
+    /* min-width: 50%; */
     /* min-width: 60%;
     min-height: 50%; */
     object-fit: contain;
@@ -11,6 +11,8 @@
     border-width: 10px;
     border-radius: 10px;
     margin: 10px;
+    background-color: black;
+    flex: 1;
 }
 
 .preview {
