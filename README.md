@@ -9,10 +9,22 @@ Im-Board is a minimalist image board inspired by early image boards but with a d
 
 ## Features
 - **Anonymous posting**: No usernames or profiles are displayed. Users are identified only by their usernames for daily limits and ownership, but this information is never exposed to other users.
+<p align="center">
+<img width="496" height="278" alt="posts" src="https://github.com/user-attachments/assets/a3f715e7-df92-4c84-9870-b5f90088652f" />
+</p>
+
 - **Multiple post types**: Upload images from your device, select a GIF from Klipy, or draw directly on the canvas.
+<p align="center">
+<img width="496" height="278" alt="drawing" src="https://github.com/user-attachments/assets/c5780789-8944-41c4-9842-e603e6efc08e" />
+</p>
+
 - **One post per day**: Each authenticated user can post one image per 24-hour period. This is enforced server-side.
 - **Ephemeral content**: All posts and associated files are automatically deleted after 24 hours. No archive or history is kept.
 - **Freeform canvas**: Images are placed anywhere on the board. You can drag them, bring them to front, and zoom or pan. There is no scrolling feed.
+<p align="center">
+<img width="496" height="278" alt="dragdroppan" src="https://github.com/user-attachments/assets/bd1aac0c-8163-459d-a4d3-891864afd7b0" />
+</p>
+
 - **No threads or replies**: Every post stands alone. There is no conversation structure.
 - **Moderation**: Users can flag posts. Posts that receive enough flags are automatically filtered.
 - **Secure authentication**: Sign in with Google OAuth or email/password via AWS Cognito. Email uniqueness is enforced.
