@@ -134,12 +134,12 @@
 
 .messageContainer {
   display: flex;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
   height: 100%;
   overflow-y: scroll;
   /* max-width: 50%; */
   min-width: min-content;
-  /* width: 100%; */
+  /* width: 60%; */
   flex: 1;
   background-color: white;
   border-radius: 50px;
