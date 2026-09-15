@@ -6,6 +6,7 @@ An anonymous, ephemeral image board with a freeform canvas.
 Im-Board is a minimalist image board inspired by early image boards but with a different philosophy. There are no threads, no replies, and no infinite scrolling. Every post is ephemeral and disappears after 24 hours. Users can post images, GIFs, and drawings on a freeform canvas that behaves more like a board than a feed.
 
 [Click here for a live demo](https://main.d6fc2prq7p0u4.amplifyapp.com/)
+(To save costs, servers are down between 7:30 PM and 6:45 AM JST)
 
 ## Features
 - **Anonymous posting**: No usernames or profiles are displayed. Users are identified only by their usernames for daily limits and ownership, but this information is never exposed to other users.
@@ -40,6 +41,7 @@ Im-Board is a minimalist image board inspired by early image boards but with a d
 - **Deployment**: AWS Elastic Beanstalk (backend), AWS Amplify (frontend)
 
 ## Live Demo
+To save costs, servers are down between 7:30 PM and 6:45 AM JST.
 [main.d6fc2prq7p0u4.amplifyapp.com](https://main.d6fc2prq7p0u4.amplifyapp.com/)
 
 ## Getting Started
