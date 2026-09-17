@@ -3,6 +3,7 @@ import '@aws-amplify/ui-react/styles.css';
 
 import { useState } from 'react';
 import { Authenticator } from '@aws-amplify/ui-react';
+import { AuthError } from './components/AuthError.tsx';
 
 import { Board } from './components/Board.tsx';
 import { NavBar } from './components/NavBar.tsx';
@@ -20,7 +21,19 @@ function App() {
     const [modalType, setModalType] = useState<ModalType>(null);
 
     return (
-        <Authenticator signUpAttributes={['email']} socialProviders={['google']}>
+        <Authenticator signUpAttributes={['email']} socialProviders={['google']}
+            components={{
+                SignIn: {
+                    Header() {
+                        return (
+                            <>
+                                <AuthError />
+                            </>
+                        );
+                    }
+                }
+            }}
+        >
             {({ signOut, user }) => (
             <>
                 <Toaster position='top-right'
