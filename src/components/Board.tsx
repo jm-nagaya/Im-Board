@@ -59,7 +59,10 @@ function BoardContent({ onImageClick, setIsDragging }: BoardProps & BoardContent
                     backgroundSize: 'cover',
                     backgroundRepeat: 'no-repeat',
                     backgroundPosition: '0 0',
-                    pointerEvents: 'none'
+                    pointerEvents: 'none',
+                    border: '0.5rem solid black',
+                    borderRadius: '1rem',
+                    boxShadow: '0 0 20px rgba(0, 0, 0, 0.5)'
                 }}
             >
                 {images.map((img) => (
@@ -85,7 +88,7 @@ export function Board( { onImageClick }: BoardProps) {
 
     return (
         <TransformWrapper
-            // initialScale={1}
+            initialScale={1}
             minScale={1}
             maxScale={5}
             centerOnInit={true}
@@ -96,21 +99,18 @@ export function Board( { onImageClick }: BoardProps) {
             disabled={isDragging}
             onInit={fetchImages}
         >
-            {/* TODO: Add buttons (maybe)*/}
-            {({ zoomIn, zoomOut, resetTransform }) => (
-                <TransformComponent
-                    wrapperStyle={{
-                        width: '100vw',
-                        height: '100vh',
-                        overflow: 'hidden'
-                    }}
-                >
-                    <BoardContent
-                        onImageClick={onImageClick}
-                        setIsDragging={setIsDragging}
-                    />
-                </TransformComponent>
-            )}
+            <TransformComponent
+                wrapperStyle={{
+                    width: '100dvw',
+                    height: '100dvh',
+                    overflow: 'hidden'
+                }}
+            >
+                <BoardContent
+                    onImageClick={onImageClick}
+                    setIsDragging={setIsDragging}
+                />
+            </TransformComponent>
         </TransformWrapper>
     );
 }

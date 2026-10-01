@@ -22,8 +22,8 @@
   overflow:scroll;
   padding: 2em;
   background-color: var(--primary);
-  width: 80vw;
-  height: 75vh;
+  width: 80dvw;
+  height: 75dvh;
   border-radius: 20px;
   align-items: center;
   justify-content: space-evenly;
@@ -244,8 +244,8 @@
     /* flex-direction: column; */
     display: block;
     padding: 1rem;
-    height: 85vh;
-    width: 85vw;
+    height: 85dvh;
+    width: 85dvw;
   }
 
   .chooser {
@@ -297,7 +297,7 @@
 
   .closeButton {
     top: 1vh;
-    right: 0.25vw;
+    right: 0.25dvw;
     font-size: 1rem;
   }
 
