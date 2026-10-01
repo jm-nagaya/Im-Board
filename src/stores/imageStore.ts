@@ -56,6 +56,7 @@ export const useImageStore = create<ImageState>((set) => ({
 
             const boardImages: ImageItem[] = data.images.map((img, index) => ({
                 ...img,
+                message: img.message || "(no message)",
                 file_path: img.file_path
                     ? `${BUCKET_URL}/${img.file_path}`
                     : null,
